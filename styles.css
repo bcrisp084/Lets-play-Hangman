@@ -1,0 +1,32 @@
+body {
+  background-color: #1a466e;
+}
+
+#alphabet {
+  @include clear;
+
+  /* margin: 15px auto; */
+  padding: 5px;
+  width: fit-content;
+}
+
+#alphabet li {
+  font-size: large;
+  float: left;
+  margin: 0 10px 10px 0;
+  list-style: none;
+  width: 35px;
+  height: 30px;
+  padding: 5px;
+  background: rgb(255, 254, 254);
+  color: base-color;
+  cursor: pointer;
+  border: solid 3px rgb(5, 5, 5);
+  transition: transform 800ms ease-in-out 55ms;
+}
+#alphabet li:hover {
+  background-color: black;
+  border: solid 1px white;
+  color: rgb(255, 255, 255);
+  transform: translatex(0px) translatey(0px);
+}
