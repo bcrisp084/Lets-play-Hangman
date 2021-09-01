@@ -8,6 +8,7 @@
 // 
 
 window.onload = function () {
+    alert('please select a letter to begin the game')
 
 
     const alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p",

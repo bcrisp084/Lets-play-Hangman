@@ -29,4 +29,7 @@ body {
   border: solid 1px white;
   color: rgb(255, 255, 255);
   transform: translatex(0px) translatey(0px);
+  filter: none;
+  transition: 0.3s ease;
+  box-shadow: 0 3px 20px #ffffff;
 }
