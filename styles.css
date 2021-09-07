@@ -22,6 +22,8 @@ body {
   cursor: pointer;
   border: solid 3px rgb(5, 5, 5);
   transition: transform 800ms ease-in-out 55ms;
+  border-radius: 20%;
+  box-shadow: 2px 3px rgb(56, 55, 55);
 }
 #alphabet button:hover {
   background-color: black;
@@ -30,15 +32,27 @@ body {
   transform: translatex(0px) translatey(0px);
   filter: none;
   transition: 0.3s ease;
-  box-shadow: 0 3px 20px #ffffff;
+  box-shadow: 0 3px #ffffff;
 }
 
 #myCanvas {
   display: flex;
   justify-content: center;
-  width: 40%;
-  height: 60%;
   margin-bottom: 10%;
+}
+
+.play-area {
+  display: flex;
+}
+
+.category {
+  flex-direction: column;
+  color: rgb(216, 211, 211);
+}
+
+.hint {
+  flex-direction: column;
+  color: rgb(223, 219, 219);
 }
 
 .title {
