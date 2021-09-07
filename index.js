@@ -44,6 +44,21 @@ $(document).ready(function () {
         $('.hint').text(gamePhrases.phrase1.hint)
 
     }
+
+    $('.letter-button').on('click', function (event) {
+        console.log(event)
+        const letterClicked = ($(this).attr('data-letter'))
+        if (letterClicked === 'f') {
+            drawBody()
+            leftLeg()
+            rightLeg()
+            rightArm()
+            leftArm()
+            head()
+
+        }
+
+    })
     loadGame()
 
 
@@ -63,6 +78,8 @@ $(document).ready(function () {
         leftLeg.moveTo(300, 200)
         leftLeg.lineTo(250, 250)
         leftLeg.stroke()
+        leftLeg.lineWidth = 7;
+        leftLeg.lineCap = 'round'
     }
     function rightLeg() {
         const c = document.getElementById('myCanvas')
@@ -70,6 +87,8 @@ $(document).ready(function () {
         rightLeg.moveTo(300, 200)
         rightLeg.lineTo(350, 250)
         rightLeg.stroke()
+        rightLeg.lineWidth = 7;
+        rightLeg.lineCap = 'round'
     }
     function rightArm() {
         const c = document.getElementById('myCanvas')
@@ -77,6 +96,8 @@ $(document).ready(function () {
         rightArm.moveTo(300, 110)
         rightArm.lineTo(350, 150)
         rightArm.stroke()
+        rightArm.lineWidth = 7;
+        rightArm.lineCap = 'round'
     }
     function leftArm() {
         const c = document.getElementById('myCanvas')
@@ -84,6 +105,8 @@ $(document).ready(function () {
         leftArm.moveTo(300, 110)
         leftArm.lineTo(250, 150)
         leftArm.stroke()
+        leftArm.lineWidth = 7;
+        leftArm.lineCap = 'round'
     }
     function head() {
         const c = document.getElementById('myCanvas')
@@ -91,14 +114,16 @@ $(document).ready(function () {
         head.beginPath()
         head.arc(300, 40, 35, 0, 2 * Math.PI)
         head.stroke()
+        head.lineWidth = 7;
+        head.lineCap = 'round'
     }
 
-    drawBody()
-    leftLeg()
-    rightLeg()
-    rightArm()
-    leftArm()
-    head()
+    // drawBody()
+    // leftLeg()
+    // rightLeg()
+    // rightArm()
+    // leftArm()
+    // head()
 })
 
 

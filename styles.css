@@ -44,6 +44,7 @@ body {
 
 .play-area {
   display: flex;
+  flex-wrap: wrap;
 }
 
 .category {
