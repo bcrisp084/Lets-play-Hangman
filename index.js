@@ -27,6 +27,9 @@ const gamePhrases = {
     }
 }
 
+let alphaRe = /[a-z]/i;
+let blankArray = []
+
 $(document).ready(function () {
 
     for (let i = 0; i < alphabet.length; i++) {
@@ -43,7 +46,17 @@ $(document).ready(function () {
         $('.hint').text(gamePhrases.phrase1.hint)
         const starting = gamePhrases.phrase1.phrase;
         console.log(starting)
-        $('.phrase').text(starting)
+        for (let i = 0; i < starting.length; i++) {
+            if (alphaRe.test(starting[i]) === true) {
+                blankArray.push('_ ')
+            } else {
+                blankArray.push(starting[i] + " ")
+            }
+            $('.phrase').text(blankArray.join(''))
+
+        }
+
+
 
     }
 
