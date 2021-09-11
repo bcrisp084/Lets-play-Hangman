@@ -50,9 +50,11 @@ body {
 .category {
   flex-direction: column;
   color: rgb(0, 0, 0);
+  text-align: center;
 }
 
 .hint {
+  text-align: center;
   flex-direction: column;
   color: rgb(0, 0, 0);
 }
@@ -61,4 +63,11 @@ body {
   font-family: sans-serif;
   text-align: center;
   text-decoration: dashed;
+}
+
+.phrase {
+  text-align: center;
+  font-size: xx-large;
+  font-family: sans-serif;
+  margin-top: 30%;
 }

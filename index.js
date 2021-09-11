@@ -39,9 +39,11 @@ $(document).ready(function () {
     }
 
     function loadGame() {
-        var num = Math.floor(Math.random() * 4) + 1;
         $('.category').text(gamePhrases.phrase1.category)
         $('.hint').text(gamePhrases.phrase1.hint)
+        const starting = gamePhrases.phrase1.phrase;
+        console.log(starting)
+        $('.phrase').text(starting)
 
     }
 
@@ -50,11 +52,11 @@ $(document).ready(function () {
         const letterClicked = ($(this).attr('data-letter'))
         if (letterClicked === 'f') {
             drawBody()
-            // leftLeg()
-            // rightLeg()
-            // rightArm()
-            // leftArm()
-            // head()
+            leftLeg()
+            rightLeg()
+            rightArm()
+            leftArm()
+            head()
 
         }
 
