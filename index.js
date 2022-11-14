@@ -1,62 +1,34 @@
-const alphabet = [
-  "a",
-  "b",
-  "c",
-  "d",
-  "e",
-  "f",
-  "g",
-  "h",
-  "i",
-  "j",
-  "k",
-  "l",
-  "m",
-  "n",
-  "o",
-  "p",
-  "q",
-  "r",
-  "s",
-  "t",
-  "u",
-  "v",
-  "w",
-  "x",
-  "y",
-  "z",
-];
-const gamePhrases = {
-  phrase1: {
-    phrase: "programming",
-    category: " CATEGORY : technology",
-    hint: " HINT : the skill required to create this game",
-  },
-
-  phrase2: {
-    phrase: "batman",
-    category: " CATEGORY : super heroes",
-    hint: " HINT : his ears are pointy",
-  },
-
-  phrase3: {
-    phrase: "barber",
-    category: " CATEGORY : grooming",
-    hint: " HINT : i shave every day but my beard stays the same",
-  },
-
-  phrase4: {
-    phrase: "darkness",
-    category: " CATEGORY : interesting facts",
-    hint: " HINT : the more there is the less you see",
-  },
-};
-
 $(document).ready(function () {
-  let userChoice;
-  let alphaRe = /[a-z]/i;
-  let blankArray = [];
-  const starting = gamePhrases.phrase1.phrase;
+  const alphabet = [
+    "a",
+    "b",
+    "c",
+    "d",
+    "e",
+    "f",
+    "g",
+    "h",
+    "i",
+    "j",
+    "k",
+    "l",
+    "m",
+    "n",
+    "o",
+    "p",
+    "q",
+    "r",
+    "s",
+    "t",
+    "u",
+    "v",
+    "w",
+    "x",
+    "y",
+    "z",
+  ];
+
+  // $("#myCanvas").attr("style", "background-color: blue");
   for (let i = 0; i < alphabet.length; i++) {
     const element = alphabet[i];
     const letterBtn = $("<button>");
@@ -66,74 +38,46 @@ $(document).ready(function () {
     $("#alphabet").append(letterBtn);
   }
 
-  const gameChoices = ["batman", "robin", "superman", "ironman"];
-  function findLetter() {
-    const randoChoice = Math.floor(Math.random() * gameChoices.length);
-    const chosenWord = gameChoices[randoChoice];
-    console.log(chosenWord);
-    console.log(randoChoice);
-    let wordLetter;
-    for (let i = 0; i < chosenWord.length; i++) {
-      wordLetter = chosenWord[i];
-      console.log(wordLetter);
+  function loadGame() {
+    $(".category").text(gamePhrases.phrase1.category);
+    $(".hint").text(gamePhrases.phrase1.hint);
+    console.log(starting);
+    for (let i = 0; i < starting.length; i++) {
       if (alphaRe.test(starting[i]) === true) {
         blankArray.push("_ ");
       } else {
         blankArray.push(starting[i] + " ");
       }
       $(".phrase").text(blankArray.join(""));
-      $(".letter-button").on("click", function (event) {
-        userChoice = $(this).attr("data-letter");
-        if (userChoice === wordLetter) {
-          console.log(true);
-        } else {
-          console.log(false);
-        }
-      });
     }
   }
-  findLetter();
-
-  //   function loadGame() {
-  //     $(".category").text(gamePhrases.phrase1.category);
-  //     $(".hint").text(gamePhrases.phrase1.hint);
-  //     console.log(starting);
-  //     for (let i = 0; i < starting.length; i++) {
-  //       if (alphaRe.test(starting[i]) === true) {
-  //         blankArray.push("_ ");
-  //       } else {
-  //         blankArray.push(starting[i] + " ");
-  //       }
-  //       $(".phrase").text(blankArray.join(""));
-  //     }
-  //   }
 
   function drawBody() {
     const c = document.getElementById("myCanvas");
     const torso = c.getContext("2d");
     torso.lineWidth = 7;
     torso.lineCap = "round";
-    torso.moveTo(300, 80);
-    torso.lineTo(300, 200);
+    torso.moveTo(200, 120);
+    torso.lineTo(200, 220);
     torso.stroke();
   }
 
-  function leftLeg() {
+  function rightLeg() {
     const c = document.getElementById("myCanvas");
     const leftLeg = c.getContext("2d");
     leftLeg.lineWidth = 7;
     leftLeg.lineCap = "round";
-    leftLeg.moveTo(300, 200);
+    leftLeg.moveTo(200, 220);
     leftLeg.lineTo(250, 250);
     leftLeg.stroke();
   }
-  function rightLeg() {
+  function leftLeg() {
     const c = document.getElementById("myCanvas");
     const rightLeg = c.getContext("2d");
     rightLeg.lineWidth = 7;
     rightLeg.lineCap = "round";
-    rightLeg.moveTo(300, 200);
-    rightLeg.lineTo(350, 250);
+    rightLeg.moveTo(200, 220);
+    rightLeg.lineTo(150, 250);
     rightLeg.stroke();
   }
   function rightArm() {
@@ -141,8 +85,8 @@ $(document).ready(function () {
     const rightArm = c.getContext("2d");
     rightArm.lineWidth = 7;
     rightArm.lineCap = "round";
-    rightArm.moveTo(300, 110);
-    rightArm.lineTo(350, 150);
+    rightArm.moveTo(200, 120);
+    rightArm.lineTo(150, 150);
     rightArm.stroke();
   }
   function leftArm() {
@@ -150,7 +94,7 @@ $(document).ready(function () {
     const leftArm = c.getContext("2d");
     leftArm.lineWidth = 7;
     leftArm.lineCap = "round";
-    leftArm.moveTo(300, 110);
+    leftArm.moveTo(200, 120);
     leftArm.lineTo(250, 150);
     leftArm.stroke();
   }
@@ -160,7 +104,48 @@ $(document).ready(function () {
     head.lineWidth = 7;
     head.lineCap = "round";
     head.beginPath();
-    head.arc(300, 40, 35, 0, 2 * Math.PI);
+    head.arc(200, 80, 35, 0, 2 * Math.PI);
     head.stroke();
   }
+
+  function gallowPole() {
+    const c = document.getElementById("myCanvas");
+    const g = c.getContext("2d");
+    g.lineWidth = 10;
+    g.lineCap = "square";
+    g.beginPath();
+    g.moveTo(10, 10);
+    g.lineTo(10, 1500);
+    g.stroke();
+  }
+
+  function gallowBase() {
+    const c = document.getElementById("myCanvas");
+    const b = c.getContext("2d");
+    b.lineWidth = 25;
+    b.beginPath();
+    b.moveTo(300, 392);
+    b.lineTo(20, 392);
+    b.stroke();
+  }
+
+  function gallowRail() {
+    const c = document.getElementById("myCanvas");
+    const r = c.getContext("2d");
+    r.lineWidth = 8;
+    r.beginPath();
+    r.moveTo(200, 45);
+    r.lineTo(10, 8);
+    r.stroke();
+  }
+  gallowRail();
+  gallowPole();
+  gallowBase();
+
+  drawBody();
+  leftLeg();
+  rightLeg();
+  leftArm();
+  rightArm();
+  head();
 });
