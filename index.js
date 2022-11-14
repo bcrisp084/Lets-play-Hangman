@@ -28,29 +28,21 @@ $(document).ready(function () {
     "z",
   ];
 
-  // $("#myCanvas").attr("style", "background-color: blue");
-  for (let i = 0; i < alphabet.length; i++) {
-    const element = alphabet[i];
-    const letterBtn = $("<button>");
-    letterBtn.addClass("letter-button letter letter-button-color");
-    letterBtn.attr("data-letter", element);
-    letterBtn.text(element);
-    $("#alphabet").append(letterBtn);
-  }
+  let score = 0;
+  const $score = $(".total");
+  $score.html(score);
 
-  function loadGame() {
-    $(".category").text(gamePhrases.phrase1.category);
-    $(".hint").text(gamePhrases.phrase1.hint);
-    console.log(starting);
-    for (let i = 0; i < starting.length; i++) {
-      if (alphaRe.test(starting[i]) === true) {
-        blankArray.push("_ ");
-      } else {
-        blankArray.push(starting[i] + " ");
-      }
-      $(".phrase").text(blankArray.join(""));
+  function createButton() {
+    for (let i = 0; i < alphabet.length; i++) {
+      const element = alphabet[i];
+      const letterBtn = $("<button>");
+      letterBtn.addClass("letter-button letter letter-button-color");
+      letterBtn.attr("data-letter", element);
+      letterBtn.text(element);
+      $("#alphabet").append(letterBtn);
     }
   }
+  createButton();
 
   function drawBody() {
     const c = document.getElementById("myCanvas");
