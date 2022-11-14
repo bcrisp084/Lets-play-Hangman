@@ -17,19 +17,22 @@
     ></script>
   </head>
   <body>
-    <div class="container">
+    <div class="header">
       <h1 class="title">Welcome to hangman</h1>
-    </div>
-    <div class="container play-area">
-      <canvas id="myCanvas" width="700" height="400"></canvas>
-      <div>
-        <h2 class="category"></h2>
-        <h3 class="hint"></h3>
-        <div class="phrase"></div>
+      <div class="scoreEl">
+        <p class="score">Score:</p>
       </div>
     </div>
+    <div class="container play-area">
+      <canvas id="myCanvas" width="400" height="400"></canvas>
+    </div>
+    <div>
+      <h3 class="word-spot"></h3>
+    </div>
+    <div class="letters-words">
+      <div id="alphabet"></div>
+    </div>
 
-    <div id="alphabet"></div>
     <script src="index.js"></script>
   </body>
 </html>
