@@ -39,7 +39,6 @@ $(document).ready(function () {
   ];
   const wordSpotlight = $(".word-spot");
   let score = 0;
-  let correctGuess = false;
   const $score = $(".total");
   $score.html(score);
   let blankArray = [];
@@ -53,34 +52,32 @@ $(document).ready(function () {
     for (let i = 0; i < numOfBlanks; i++) {
       blankArray.push("_");
     }
-    blankArray = blankArray.join(" ");
-    console.log(blankArray);
-    wordSpotlight.text(blankArray);
+    wordSpotlight.text(blankArray.join(" "));
   }
 
   function checkGuessed(letter) {
-    console.log(letter);
-    console.log(alphabet);
-    correctGuess = false;
+    let correctGuess = false;
     for (let i = 0; i < numOfBlanks; i++) {
       if (chosenMovie[i] === letter) {
         correctGuess = true;
       }
-      if (correctGuess) {
-        for (let i = 0; i < numOfBlanks; i++) {
-          if (chosenMovie[i] === letter) {
-            blankArray[i] === letter;
-          }
+    }
+    if (correctGuess) {
+      for (let j = 0; j < numOfBlanks; j++) {
+        if (chosenMovie[j] === letter) {
+          blankArray[j] = letter;
         }
-        wordSpotlight.text(blankArray);
       }
+      wordSpotlight.text(blankArray.join(''));
     }
   }
 
   $(document).on("click", ".letter", function (event) {
-    console.log($(this).attr("data-letter"));
-    const key = $(this).attr("data-letter");
-    if (alphabet.includes(key)) {
+    const key = $(this).attr("data-letter").toLowerCase();
+    var alphabetNumericCharacters =
+      "abcdefghijklmnopqrstuvwxyz0123456789 ".split("");
+    console.log("key", key);
+    if (alphabetNumericCharacters.includes(key)) {
       let letterGuessed = $(this).attr("data-letter");
       checkGuessed(letterGuessed);
     }
