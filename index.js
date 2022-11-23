@@ -27,10 +27,37 @@ $(document).ready(function () {
     "y",
     "z",
   ];
-
+  const movies = [
+    "batman",
+    "superman",
+    "inception",
+    "scarface",
+    "minions",
+    "tmnt",
+    "elf",
+    "grinch",
+  ];
+  const wordSpotlight = $(".word-spot");
   let score = 0;
   const $score = $(".total");
   $score.html(score);
+  let blankArray = [];
+  let chosenMovie = "";
+  let numOfBlanks = 0;
+
+  function createBlanks() {
+    chosenMovie = movies[Math.floor(Math.random() * movies.length)].split("");
+    console.log(chosenMovie);
+    numOfBlanks = chosenMovie.length;
+    for (let i = 0; i < numOfBlanks; i++) {
+      blankArray.push("_");
+    }
+    blankArray = blankArray.join(" ");
+    console.log(blankArray);
+    wordSpotlight.text(blankArray);
+  }
+
+  createBlanks();
 
   function createButton() {
     for (let i = 0; i < alphabet.length; i++) {
