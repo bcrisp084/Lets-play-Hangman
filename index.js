@@ -39,6 +39,7 @@ $(document).ready(function () {
   ];
   const wordSpotlight = $(".word-spot");
   let score = 0;
+  let correctGuess = false;
   const $score = $(".total");
   $score.html(score);
   let blankArray = [];
@@ -57,6 +58,35 @@ $(document).ready(function () {
     wordSpotlight.text(blankArray);
   }
 
+  function checkGuessed(letter) {
+    console.log(letter);
+    console.log(alphabet);
+    correctGuess = false;
+    for (let i = 0; i < numOfBlanks; i++) {
+      if (chosenMovie[i] === letter) {
+        correctGuess = true;
+      }
+      if (correctGuess) {
+        for (let i = 0; i < numOfBlanks; i++) {
+          if (chosenMovie[i] === letter) {
+            blankArray[i] === letter;
+          }
+        }
+        wordSpotlight.text(blankArray);
+      }
+    }
+  }
+
+  $(document).on("click", ".letter", function (event) {
+    console.log($(this).attr("data-letter"));
+    const key = $(this).attr("data-letter");
+    if (alphabet.includes(key)) {
+      let letterGuessed = $(this).attr("data-letter");
+      checkGuessed(letterGuessed);
+    }
+  });
+
+  checkGuessed();
   createBlanks();
 
   function createButton() {
