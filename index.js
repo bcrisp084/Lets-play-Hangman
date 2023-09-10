@@ -40,6 +40,7 @@ $(document).ready(function () {
   const wordSpotlight = $(".word-spot");
   let score = 0;
   const $score = $(".total");
+  let letterBtn;
   $score.html(score);
   let blankArray = [];
   let chosenMovie = "";
@@ -68,7 +69,7 @@ $(document).ready(function () {
           blankArray[j] = letter;
         }
       }
-      wordSpotlight.text(blankArray.join(''));
+      wordSpotlight.text(blankArray.join(""));
     }
   }
 
@@ -76,12 +77,18 @@ $(document).ready(function () {
     const key = $(this).attr("data-letter").toLowerCase();
     var alphabetNumericCharacters =
       "abcdefghijklmnopqrstuvwxyz0123456789 ".split("");
-    console.log("key", key);
     if (alphabetNumericCharacters.includes(key)) {
       let letterGuessed = $(this).attr("data-letter");
       checkGuessed(letterGuessed);
     }
+
   });
+
+  function didWin() {
+    console.log("wordspot", wordSpotlight);
+  }
+
+  didWin();
 
   checkGuessed();
   createBlanks();
@@ -89,7 +96,7 @@ $(document).ready(function () {
   function createButton() {
     for (let i = 0; i < alphabet.length; i++) {
       const element = alphabet[i];
-      const letterBtn = $("<button>");
+      letterBtn = $("<button>");
       letterBtn.addClass("letter-button letter letter-button-color");
       letterBtn.attr("data-letter", element);
       letterBtn.text(element);
@@ -187,11 +194,4 @@ $(document).ready(function () {
   gallowRail();
   gallowPole();
   gallowBase();
-
-  drawBody();
-  leftLeg();
-  rightLeg();
-  leftArm();
-  rightArm();
-  head();
 });
