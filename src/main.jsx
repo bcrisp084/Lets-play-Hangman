@@ -7,10 +7,17 @@ import {
   createRoutesFromElements,
   RouterProvider,
   Route,
+  Routes,
 } from "react-router-dom";
+import Game from "./Pages/Game.jsx";
 
 const router = createBrowserRouter(
-  createRoutesFromElements(<Route path="/" element={<App />} />)
+  createRoutesFromElements(
+    <>
+      <Route path="/" element={<App />} />
+      <Route path="/play" element={<Game />} />
+    </>
+  )
 );
 
 ReactDOM.createRoot(document.getElementById("root")).render(
