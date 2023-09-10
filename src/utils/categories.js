@@ -1,4 +1,4 @@
-export const movies = [
+const movies = [
   "avatar",
   "inception",
   "titanic",
@@ -11,7 +11,7 @@ export const movies = [
   "gladiator",
 ];
 
-export const countries = [
+const countries = [
   "usa",
   "canada",
   "france",
@@ -24,7 +24,7 @@ export const countries = [
   "russia",
 ];
 
-export const animals = [
+const animals = [
   "lion",
   "elephant",
   "tiger",
@@ -37,7 +37,7 @@ export const animals = [
   "panda",
 ];
 
-export const fruits = [
+const fruits = [
   "apple",
   "banana",
   "orange",
@@ -50,7 +50,7 @@ export const fruits = [
   "peach",
 ];
 
-export const programmingLanguages = [
+const programmingLanguages = [
   "javascript",
   "python",
   "java",
@@ -62,8 +62,7 @@ export const programmingLanguages = [
   "go",
   "rust",
 ];
-
-export const sports = [
+const sports = [
   "soccer",
   "basketball",
   "tennis",
@@ -75,8 +74,7 @@ export const sports = [
   "rugby",
   "hockey",
 ];
-
-export const cars = [
+const cars = [
   "toyota",
   "honda",
   "ford",
@@ -88,8 +86,7 @@ export const cars = [
   "audi",
   "hyundai",
 ];
-
-export const music = [
+const music = [
   "rock",
   "pop",
   "hiphop",
@@ -101,3 +98,14 @@ export const music = [
   "electronic",
   "rap",
 ];
+
+export {
+  movies,
+  countries,
+  animals,
+  fruits,
+  programmingLanguages,
+  sports,
+  cars,
+  music,
+};

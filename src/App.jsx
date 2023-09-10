@@ -1,6 +1,8 @@
 import { Box, Card, Container } from "@mui/material";
+import { useNavigate } from "react-router";
 
 function App() {
+  const navigate = useNavigate();
   const categories = [
     "movies",
     "countries",
@@ -14,8 +16,9 @@ function App() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // const data = new FormData(event.currentTarget);
-    window.location.href = `/play`;
+    const data = new FormData(event.currentTarget);
+    const category = data.get("categories");
+    navigate(`/${category}`);
   };
   return (
     <>
