@@ -35,3 +35,22 @@
   border: 2px solid #61dafb;
   cursor: not-allowed;
 }
+
+@media only screen and (max-width: 900px) {
+  .letter-btn {
+    width: 55px;
+    height: 45px;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .letter-btn {
+    width: 45px;
+    height: 35px;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .letter-btn {
+    width: 35px;
+    height: 25px;
+  }
+}
