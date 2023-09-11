@@ -4,17 +4,9 @@ import { useState } from "react";
 const Keyboard = () => {
   const letters = "abcdefghijklmnopqrstuvwxyz".split("");
   const [disabled, setDisabled] = useState([]);
-  console.log("disabled-outside", disabled);
 
   const handleClick = (letter) => {
-    if (!disabled) {
-      console.log(" not disabled");
-    } else {
-      console.log("disabled");
-    }
-    console.log("letter", letter);
     setDisabled([...disabled, letter]);
-    console.log("disabled", disabled);
   };
 
   return (

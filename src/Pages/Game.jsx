@@ -3,7 +3,7 @@ import { useState } from "react";
 import categories from "../utils/categories.js";
 import Keyboard from "../components/Keyboard/Keyboard.jsx";
 import Word from "../components/Word/Word.jsx";
-console.log("categories", categories);
+
 const Game = () => {
   const [incorrectGuesses, setIncorrectGuesses] = useState(0);
   const [correctGuesses, setCorrectGuesses] = useState(0);
@@ -18,7 +18,6 @@ const Game = () => {
     categories[category][
       Math.floor(Math.random() * categories[category].length)
     ];
-  console.log(word);
 
   return (
     <div>
