@@ -23,8 +23,8 @@ const Game = () => {
     cars,
     music,
   };
-  const words = categories[category];
-  console.log(words);
+  const word = categories[category];
+  console.log(word);
 
   return (
     <div>
