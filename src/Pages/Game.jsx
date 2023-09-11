@@ -9,6 +9,7 @@ import {
   cars,
   music,
 } from "../utils/categories.js";
+import Keyboard from "../components/Keyboard/Keyboard.jsx";
 
 const Game = () => {
   const params = useParams();
@@ -29,6 +30,7 @@ const Game = () => {
   return (
     <div>
       <h1>Game</h1>
+      <Keyboard />
     </div>
   );
 };

@@ -1,0 +1,30 @@
+.letter {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  width: 50%;
+  margin: 0 auto;
+}
+
+.letter-btn {
+  width: 70px;
+  height: 50px;
+  border-radius: 8px;
+  border: 2px solid #000;
+  margin: 5px;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  background-color: #61dafb;
+  color: white;
+  text-shadow: 0 0 10px #000000;
+  box-shadow: 1px 1px 3px #fff;
+}
+
+.letter-btn:hover {
+  background-color: #282c34;
+  color: #fff;
+  transition: all 0.2s ease-in-out;
+  border: 2px solid #61dafb;
+}
