@@ -28,3 +28,10 @@
   transition: all 0.2s ease-in-out;
   border: 2px solid #61dafb;
 }
+
+.letter-btn[disabled] {
+  background-color: #282c34;
+  color: #fff;
+  border: 2px solid #61dafb;
+  cursor: not-allowed;
+}
