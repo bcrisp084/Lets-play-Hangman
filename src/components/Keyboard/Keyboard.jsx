@@ -1,5 +1,4 @@
 /* eslint-disable react/prop-types */
-// Keyboard.js
 import "./Keyboard.css";
 
 const Keyboard = ({ disabledKeys, onKeyClick }) => {
@@ -11,6 +10,7 @@ const Keyboard = ({ disabledKeys, onKeyClick }) => {
         const isDisabled = disabledKeys.includes(letter);
         return (
           <button
+            value={letter}
             className="letter-btn"
             key={index}
             disabled={isDisabled}
