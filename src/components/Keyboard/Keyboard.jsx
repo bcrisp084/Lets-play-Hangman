@@ -1,24 +1,24 @@
+/* eslint-disable react/prop-types */
+// Keyboard.js
 import "./Keyboard.css";
-import { useState } from "react";
 
-const Keyboard = () => {
+const Keyboard = ({ disabledKeys, onKeyClick }) => {
   const letters = "abcdefghijklmnopqrstuvwxyz".split("");
-  const [disabled, setDisabled] = useState([]);
-
-  const handleClick = (letter) => {
-    setDisabled([...disabled, letter]);
-  };
 
   return (
     <div className="letter">
       {letters.map((letter, index) => {
-        const isDisabled = disabled.includes(letter);
+        const isDisabled = disabledKeys.includes(letter);
         return (
           <button
             className="letter-btn"
             key={index}
             disabled={isDisabled}
-            onClick={() => handleClick(letter)}
+            onClick={() => {
+              if (!isDisabled) {
+                onKeyClick(letter); // Notify the parent of the key click
+              }
+            }}
           >
             {letter}
           </button>
