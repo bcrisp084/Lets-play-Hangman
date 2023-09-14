@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import categories from "../utils/categories.js";
 import Keyboard from "../components/Keyboard/Keyboard.jsx";
 import Word from "../components/Word/Word.jsx";
+import Reset from "../components/Reset/Reset.jsx";
 import { useParams } from "react-router";
 
 const Game = () => {
@@ -18,10 +19,8 @@ const Game = () => {
   console.log(currentWord);
 
   useEffect(() => {
-    const word =
-      categories[category][
-        Math.floor(Math.random() * categories[category].length)
-      ];
+    const index = Math.floor(Math.random() * categories[category].length);
+    const word = categories[category][index];
     setCurrentWord(word); // Set the word state
   }, [category]);
 
@@ -48,6 +47,7 @@ const Game = () => {
   };
 
   const handleReset = () => {
+    setCurrentWord("");
     setDisabledKeys([]);
     setIncorrectGuesses(10);
     setGuessedLetters([]);
@@ -56,8 +56,13 @@ const Game = () => {
   };
 
   return (
-    <div>
-      <h1>Category: {category}</h1>
+    <>
+      <div className="header">
+        <Reset handleClick={handleReset} />
+        <div className="heading">
+          <h1>Category: {category}</h1>
+        </div>
+      </div>
       {gameOver ? (
         <h2>Game Over!</h2>
       ) : (
@@ -66,7 +71,7 @@ const Game = () => {
 
       <Word word={currentWord} />
       <Keyboard disabledKeys={disabledKeys} onKeyClick={handleKeyClick} />
-    </div>
+    </>
   );
 };
 

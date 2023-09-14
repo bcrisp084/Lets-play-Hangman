@@ -1,4 +1,5 @@
 /* eslint-disable react/prop-types */
+import LetterButton from "../LetterButton/LetterButton";
 import "./Keyboard.css";
 
 const Keyboard = ({ disabledKeys, onKeyClick }) => {
@@ -9,19 +10,14 @@ const Keyboard = ({ disabledKeys, onKeyClick }) => {
       {letters.map((letter, index) => {
         const isDisabled = disabledKeys.includes(letter);
         return (
-          <button
-            value={letter}
-            className="letter-btn"
+          <LetterButton
             key={index}
-            disabled={isDisabled}
-            onClick={() => {
-              if (!isDisabled) {
-                onKeyClick(letter); // Notify the parent of the key click
-              }
-            }}
+            isDisabled={isDisabled}
+            letter={letter}
+            onClick={onKeyClick}
           >
             {letter}
-          </button>
+          </LetterButton>
         );
       })}
     </div>
