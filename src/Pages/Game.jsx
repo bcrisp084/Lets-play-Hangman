@@ -5,6 +5,7 @@ import Keyboard from "../components/Keyboard/Keyboard.jsx";
 import Word from "../components/Word/Word.jsx";
 import Reset from "../components/Reset/Reset.jsx";
 import Timer from "../components/Timer/Timer.jsx";
+import Stickman from "../components/Stickman/Stickman.jsx";
 import { useParams } from "react-router";
 
 const Game = () => {
@@ -83,7 +84,7 @@ const Game = () => {
       ) : (
         <h2>Guesses Left: {incorrectGuesses}</h2>
       )}
-
+      <Stickman />
       <Word guessed={guessedLetters} word={currentWord} />
       <Keyboard disabledKeys={disabledKeys} onKeyClick={handleKeyClick} />
     </>
