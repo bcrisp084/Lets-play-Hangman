@@ -13,10 +13,9 @@ const Game = () => {
   const [guessedLetters, setGuessedLetters] = useState([]);
   const [gameOver, setGameOver] = useState(false);
   const [gameWon, setGameWon] = useState(false);
-
   const params = useParams();
   const category = params.category;
-  console.log(currentWord);
+  console.log("word", currentWord);
 
   useEffect(() => {
     const index = Math.floor(Math.random() * categories[category].length);
@@ -69,7 +68,7 @@ const Game = () => {
         <h2>Guesses Left: {incorrectGuesses}</h2>
       )}
 
-      <Word word={currentWord} />
+      <Word guessed={guessedLetters} word={currentWord} />
       <Keyboard disabledKeys={disabledKeys} onKeyClick={handleKeyClick} />
     </>
   );

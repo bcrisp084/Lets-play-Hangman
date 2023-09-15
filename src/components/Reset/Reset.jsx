@@ -1,10 +1,10 @@
 /* eslint-disable react/prop-types */
 import "./Reset.css";
 
-const Reset = ({ handleReset }) => {
+const Reset = ({ handleClick }) => {
   return (
     <div>
-      <button className="reset" onClick={handleReset}>
+      <button className="reset" onClick={handleClick}>
         Reset
       </button>
     </div>
