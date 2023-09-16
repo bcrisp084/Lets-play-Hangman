@@ -19,37 +19,12 @@ const Game = () => {
   const params = useParams();
   const category = params.category;
   console.log("category", category);
+  console.log("time", time);
 
   useEffect(() => {
     const index = Math.floor(Math.random() * categories[category].length);
     const word = categories[category][index];
     setCurrentWord(word); // Set the word state
-    handleTimer();
-  }, [category]);
-
-  const handleKeyClick = (key) => {
-    // Update the state to include the clicked key
-    if (!currentWord.includes(key)) {
-      setIncorrectGuesses(incorrectGuesses - 1);
-    }
-
-    if (incorrectGuesses < 1) {
-      setGameOver(true);
-    }
-
-    if (
-      currentWord.split("").every((letter) => guessedLetters.includes(letter))
-    ) {
-      setGameWon(true);
-    }
-
-    setGuessedLetters([...guessedLetters, key]);
-
-    // Update the state to include the clicked key
-    setDisabledKeys([...disabledKeys, key]);
-  };
-
-  const handleTimer = () => {
     const timerInterval = setInterval(() => {
       setTime((prev) => {
         if (prev === 0) {
@@ -59,6 +34,25 @@ const Game = () => {
         return prev - 1;
       });
     }, 1000);
+    return () => clearInterval(timerInterval);
+  }, [category]);
+
+  const handleKeyClick = (key) => {
+    // Update the state to include the clicked key
+    if (!currentWord.includes(key)) {
+      setIncorrectGuesses(incorrectGuesses - 1);
+    }
+    if (incorrectGuesses < 1) {
+      setGameOver(true);
+    }
+    if (
+      currentWord.split("").every((letter) => guessedLetters.includes(letter))
+    ) {
+      setGameWon(true);
+    }
+    setGuessedLetters([...guessedLetters, key]);
+    // Update the state to include the clicked key
+    setDisabledKeys([...disabledKeys, key]);
   };
 
   const handleReset = () => {
