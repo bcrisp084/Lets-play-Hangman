@@ -22,6 +22,15 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 
 [MIT](https://choosealicense.com/licenses/mit/)
 
+## Site
+
+Click the link to go the live webpage => [Hangman](https://lets-play-hangman.vercel.app/)
+
+## Resources
+
+- [React](https://reactjs.org/)
+- [Vite](https://vitejs.dev/)
+
 # Vite + React
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
