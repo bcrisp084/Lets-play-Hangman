@@ -7,19 +7,27 @@ import Reset from "../components/Reset/Reset.jsx";
 import Timer from "../components/Timer/Timer.jsx";
 import Stickman from "../components/Stickman/Stickman.jsx";
 import { useParams } from "react-router";
+import Stickone from "../images/Stickone.png";
+import Sticktwo from "../images/Sticktwo.png";
+import Stickthree from "../images/Stickthree.png";
+import Stickfour from "../images/Stickfour.png";
+import Stickfive from "../images/Stickfive.png";
+import Sticksix from "../images/Sticksix.jpg";
+const images = [Stickone, Sticktwo, Stickthree, Stickfour, Stickfive, Sticksix];
 
+let index = 0;
 const Game = () => {
   const [disabledKeys, setDisabledKeys] = useState([]);
-  const [incorrectGuesses, setIncorrectGuesses] = useState(10);
+  const [incorrectGuesses, setIncorrectGuesses] = useState(6);
   const [currentWord, setCurrentWord] = useState("");
   const [guessedLetters, setGuessedLetters] = useState([]);
   const [gameOver, setGameOver] = useState(false);
   const [gameWon, setGameWon] = useState(false);
   const [time, setTime] = useState(30);
+  const [currentImage, setCurrentImage] = useState(images[index]); // [0, 1, 2, 3, 4, 5, 6
   const params = useParams();
   const category = params.category;
-  console.log("category", category);
-  console.log("time", time);
+  console.log("currentImage", currentImage);
 
   useEffect(() => {
     const index = Math.floor(Math.random() * categories[category].length);
@@ -41,6 +49,8 @@ const Game = () => {
     // Update the state to include the clicked key
     if (!currentWord.includes(key)) {
       setIncorrectGuesses(incorrectGuesses - 1);
+      index++;
+      setCurrentImage(images[index]);
     }
     if (incorrectGuesses < 1) {
       setGameOver(true);
@@ -78,7 +88,7 @@ const Game = () => {
       ) : (
         <h2>Guesses Left: {incorrectGuesses}</h2>
       )}
-      <Stickman />
+      <Stickman currentImage={currentImage} />
       <Word guessed={guessedLetters} word={currentWord} />
       <Keyboard disabledKeys={disabledKeys} onKeyClick={handleKeyClick} />
     </>

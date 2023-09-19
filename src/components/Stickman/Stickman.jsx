@@ -1,11 +1,10 @@
-import StickOne from "../../images/stick-one.png";
 import ImageFig from "../ImageFig/ImageFig";
 import "./Stickman.css";
 
-const Stickman = () => {
+const Stickman = ({ currentImage }) => {
   return (
     <div className="stick-figure">
-      <ImageFig image={StickOne} />
+      <ImageFig image={currentImage} />
     </div>
   );
 };
