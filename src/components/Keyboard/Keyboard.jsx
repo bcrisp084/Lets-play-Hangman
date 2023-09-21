@@ -1,12 +1,18 @@
 /* eslint-disable react/prop-types */
 import LetterButton from "../LetterButton/LetterButton";
 import "./Keyboard.css";
+import { motion } from "framer-motion";
 
 const Keyboard = ({ disabledKeys, onKeyClick }) => {
   const letters = "abcdefghijklmnopqrstuvwxyz".split("");
 
   return (
-    <div className="letter">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
+      className="letter"
+    >
       {letters.map((letter, index) => {
         const isDisabled = disabledKeys.includes(letter);
         return (
@@ -20,7 +26,7 @@ const Keyboard = ({ disabledKeys, onKeyClick }) => {
           </LetterButton>
         );
       })}
-    </div>
+    </motion.div>
   );
 };
 

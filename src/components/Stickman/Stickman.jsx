@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import ImageFig from "../ImageFig/ImageFig";
 import "./Stickman.css";
 

@@ -1,5 +1,6 @@
 import { Box, Card, Container } from "@mui/material";
 import { useNavigate } from "react-router";
+import { motion } from "framer-motion";
 
 function App() {
   const navigate = useNavigate();
@@ -22,7 +23,13 @@ function App() {
   };
   return (
     <>
-      <h1>Lets play Hangman!</h1>
+      <motion.h1
+        initial={{ y: "-100" }}
+        animate={{ y: 0 }}
+        transition={{ delay: 0.2, type: "spring", stiffness: 120 }}
+      >
+        Lets play Hangman!
+      </motion.h1>
       <Container maxWidth="sm">
         <Box sx={{ display: "flex", justifyContent: "center" }}>
           <Card
