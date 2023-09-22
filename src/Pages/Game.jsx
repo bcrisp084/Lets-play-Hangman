@@ -12,6 +12,7 @@ import Stickthree from "../images/Stickthree.png";
 import Stickfour from "../images/Stickfour.png";
 import Stickfive from "../images/Stickfive.png";
 import Sticksix from "../images/Sticksix.jpg";
+import Restart from "../components/Restart/Restart.jsx";
 const images = [Stickone, Sticktwo, Stickthree, Stickfour, Stickfive, Sticksix];
 
 let index = 0;
@@ -22,7 +23,7 @@ const Game = () => {
   const [guessedLetters, setGuessedLetters] = useState([]);
   const [gameOver, setGameOver] = useState(false);
   const [gameWon, setGameWon] = useState(false);
-  const [time, setTime] = useState(30);
+  const [time, setTime] = useState(45);
   const [currentImage, setCurrentImage] = useState(images[index]); // [0, 1, 2, 3, 4, 5, 6
   const params = useParams();
   const category = params.category;
