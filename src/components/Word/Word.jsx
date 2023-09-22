@@ -4,6 +4,7 @@ const Word = ({ word, guessed }) => {
   const isLetter = word.split("").map((letter) => {
     return guessed.includes(letter) ? letter : "_";
   });
+
   return (
     <div className="word-area">
       {isLetter.map((letter, index) => {

@@ -22,21 +22,21 @@ const Game = () => {
   const [currentWord, setCurrentWord] = useState("");
   const [guessedLetters, setGuessedLetters] = useState([]);
   const [gameOver, setGameOver] = useState(false);
-  const [gameWon, setGameWon] = useState(true);
+  const [gameWon, setGameWon] = useState(false);
   const [time, setTime] = useState(45);
-  const [currentImage, setCurrentImage] = useState(images[index]); // [0, 1, 2, 3, 4, 5, 6
+  const [currentImage, setCurrentImage] = useState(images[index]);
   const params = useParams();
   const category = params.category;
 
   useEffect(() => {
     index = 0;
-    if (!gameOver) {
+    if (!gameOver && !gameWon) {
       const wordIndex = Math.floor(Math.random() * categories[category].length);
       const word = categories[category][wordIndex];
-      setCurrentWord(word); // Set the word state
+      setCurrentWord(word);
     }
     let timerInterval;
-    if (!gameOver) {
+    if (!gameOver && !gameWon) {
       timerInterval = setInterval(() => {
         setTime((prev) => {
           if (prev === 0) {
@@ -48,10 +48,9 @@ const Game = () => {
       }, 1000);
     }
     return () => clearInterval(timerInterval);
-  }, [category, gameOver]);
+  }, [category, gameOver, gameWon]);
 
   const handleKeyClick = (key) => {
-    // Check if the clicked key is in the current word
     if (!currentWord.includes(key)) {
       setIncorrectGuesses(incorrectGuesses - 1);
       index++;
@@ -59,23 +58,29 @@ const Game = () => {
     }
 
     // Update the state to include the clicked key
-    setGuessedLetters([...guessedLetters, key]);
+    const newGuessedLetters = [...guessedLetters, key];
+    setGuessedLetters(newGuessedLetters);
     setDisabledKeys([...disabledKeys, key]);
-
-    // Check for a win condition
-    if (
-      currentWord.split("").every((letter) => guessedLetters.includes(letter))
-    ) {
-      setGameWon(true);
-      return; // Exit the function early to prevent further processing
-    }
 
     // Check for a loss condition
     if (incorrectGuesses <= 1) {
       setGameOver(true);
     }
+
+    // Check for a win condition here when a letter is guessed
+    if (
+      currentWord
+        .split("")
+        .every((letter) => newGuessedLetters.includes(letter))
+    ) {
+      // Check if there are any underscores left in the word
+      if (!currentWord.includes("_")) {
+        setGameWon(true);
+      }
+    }
   };
 
+  // Function to check if the game should end
   const checkGameEnd = () => {
     if (gameOver || gameWon) {
       return true;
@@ -103,7 +108,10 @@ const Game = () => {
         <Stickman currentImage={currentImage} />
       )}
       {checkGameEnd() ? (
-        <Restart />
+        <>
+          <h2>The word was: {currentWord}</h2>
+          <Restart />
+        </>
       ) : (
         <>
           <Word guessed={guessedLetters} word={currentWord} />

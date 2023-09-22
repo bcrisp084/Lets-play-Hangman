@@ -24,9 +24,9 @@ function App() {
   return (
     <>
       <motion.h1
-        initial={{ y: "-100" }}
+        initial={{ y: "-1000" }}
         animate={{ y: 0 }}
-        transition={{ delay: 0.2, type: "spring", stiffness: 120 }}
+        transition={{ delay: 0.2, type: "spring", stiffness: 50 }}
       >
         Lets play Hangman!
       </motion.h1>
@@ -60,9 +60,13 @@ function App() {
                 </select>
                 <br />
                 <br />
-                <button className="start-btn" type="submit">
+                <motion.button
+                  whileHover={{ scale: 1.1 }}
+                  className="start-btn"
+                  type="submit"
+                >
                   Start Game
-                </button>
+                </motion.button>
               </form>
             </Card>
           </motion.div>
