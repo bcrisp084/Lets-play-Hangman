@@ -102,7 +102,10 @@ const Game = () => {
         <h2>Guesses Left: {incorrectGuesses}</h2>
       )}
       {gameWon ? (
-        <h2>You Won!</h2>
+        <>
+          <h2>You Won!</h2>
+          <Confetti numberOfPieces={200} />
+        </>
       ) : gameOver ? (
         <h2>You Lost!</h2>
       ) : (
@@ -111,7 +114,6 @@ const Game = () => {
       {checkGameEnd() ? (
         <>
           <h2>The word was: {currentWord}</h2>
-          <Confetti numberOfPieces={200} />
           <Restart />
         </>
       ) : (
