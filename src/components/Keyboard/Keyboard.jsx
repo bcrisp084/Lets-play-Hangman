@@ -1,18 +1,17 @@
 /* eslint-disable react/prop-types */
+//import LetterButton component
 import LetterButton from "../LetterButton/LetterButton";
 import "./Keyboard.css";
+//import framer motion
 import { motion } from "framer-motion";
-
+// pass in props for disabled keys and on key click
 const Keyboard = ({ disabledKeys, onKeyClick }) => {
   const letters = "abcdefghijklmnopqrstuvwxyz".split("");
 
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.5 }}
-      className="letter"
-    >
+    // use framer motion to animate keyboard
+    // map over each letter and create a letter button component
+    <motion.div className="letter">
       {letters.map((letter, index) => {
         const isDisabled = disabledKeys.includes(letter);
         return (
