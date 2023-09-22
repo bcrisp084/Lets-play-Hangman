@@ -3,7 +3,7 @@ import "./Restart.css";
 
 const Restart = () => {
   return (
-    <div>
+    <div className="home">
       <Link className="home-btn" to="/">
         Home
       </Link>

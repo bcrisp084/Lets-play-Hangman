@@ -22,16 +22,17 @@ const Game = () => {
   const [currentWord, setCurrentWord] = useState("");
   const [guessedLetters, setGuessedLetters] = useState([]);
   const [gameOver, setGameOver] = useState(false);
-  const [gameWon, setGameWon] = useState(false);
+  const [gameWon, setGameWon] = useState(true);
   const [time, setTime] = useState(45);
   const [currentImage, setCurrentImage] = useState(images[index]); // [0, 1, 2, 3, 4, 5, 6
   const params = useParams();
   const category = params.category;
 
   useEffect(() => {
+    index = 0;
     if (!gameOver) {
-      const index = Math.floor(Math.random() * categories[category].length);
-      const word = categories[category][index];
+      const wordIndex = Math.floor(Math.random() * categories[category].length);
+      const word = categories[category][wordIndex];
       setCurrentWord(word); // Set the word state
     }
     let timerInterval;
@@ -75,6 +76,12 @@ const Game = () => {
     }
   };
 
+  const checkGameEnd = () => {
+    if (gameOver || gameWon) {
+      return true;
+    }
+  };
+
   return (
     <>
       <div className="header">
@@ -95,8 +102,14 @@ const Game = () => {
       ) : (
         <Stickman currentImage={currentImage} />
       )}
-      <Word guessed={guessedLetters} word={currentWord} />
-      <Keyboard disabledKeys={disabledKeys} onKeyClick={handleKeyClick} />
+      {checkGameEnd() ? (
+        <Restart />
+      ) : (
+        <>
+          <Word guessed={guessedLetters} word={currentWord} />
+          <Keyboard disabledKeys={disabledKeys} onKeyClick={handleKeyClick} />
+        </>
+      )}
     </>
   );
 };
