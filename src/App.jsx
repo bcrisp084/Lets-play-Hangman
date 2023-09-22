@@ -32,34 +32,40 @@ function App() {
       </motion.h1>
       <Container maxWidth="sm">
         <Box sx={{ display: "flex", justifyContent: "center" }}>
-          <Card
-            sx={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              height: "50vh",
-              width: "500px",
-              backgroundColor: "#415a77",
-              color: "#fff",
-              boxShadow: "10px 10px 5px 10px rgba(0, 0, 0, 0.2)",
-            }}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.5, duration: 1.5 }}
           >
-            <form onSubmit={handleSubmit}>
-              <label htmlFor="categories">Choose a category:</label>
-              <select id="categories" name="categories">
-                {categories.map((item) => (
-                  <option value={item} key={item}>
-                    {item}
-                  </option>
-                ))}
-              </select>
-              <br />
-              <br />
-              <button className="start-btn" type="submit">
-                Start Game
-              </button>
-            </form>
-          </Card>
+            <Card
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                height: "50vh",
+                width: "500px",
+                backgroundColor: "#415a77",
+                color: "#fff",
+                boxShadow: "10px 10px 5px 10px rgba(0, 0, 0, 0.2)",
+              }}
+            >
+              <form onSubmit={handleSubmit}>
+                <label htmlFor="categories">Choose a category:</label>
+                <select id="categories" name="categories">
+                  {categories.map((item) => (
+                    <option value={item} key={item}>
+                      {item}
+                    </option>
+                  ))}
+                </select>
+                <br />
+                <br />
+                <button className="start-btn" type="submit">
+                  Start Game
+                </button>
+              </form>
+            </Card>
+          </motion.div>
         </Box>
       </Container>
     </>
