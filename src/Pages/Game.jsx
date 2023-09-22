@@ -13,6 +13,7 @@ import Stickfour from "../images/Stickfour.png";
 import Stickfive from "../images/Stickfive.png";
 import Sticksix from "../images/Sticksix.jpg";
 import Restart from "../components/Restart/Restart.jsx";
+import Confetti from "../components/Confetti/Confetti.jsx";
 const images = [Stickone, Sticktwo, Stickthree, Stickfour, Stickfive, Sticksix];
 
 let index = 0;
@@ -110,6 +111,7 @@ const Game = () => {
       {checkGameEnd() ? (
         <>
           <h2>The word was: {currentWord}</h2>
+          <Confetti numberOfPieces={200} />
           <Restart />
         </>
       ) : (
