@@ -4,28 +4,29 @@ import categories from "../utils/categories.js";
 import Keyboard from "../components/Keyboard/Keyboard.jsx";
 import Word from "../components/Word/Word.jsx";
 import Timer from "../components/Timer/Timer.jsx";
-import Stickman from "../components/Stickman/Stickman.jsx";
 import { useParams } from "react-router";
-import Stickone from "../images/Stickone.png";
-import Sticktwo from "../images/Sticktwo.png";
-import Stickthree from "../images/Stickthree.png";
-import Stickfour from "../images/Stickfour.png";
-import Stickfive from "../images/Stickfive.png";
-import Sticksix from "../images/Sticksix.jpg";
 import Restart from "../components/Restart/Restart.jsx";
 import Confetti from "../components/Confetti/Confetti.jsx";
-const images = [Stickone, Sticktwo, Stickthree, Stickfour, Stickfive, Sticksix];
+import Gallow from "../components/Gallow/Gallow.jsx";
+import {
+  Head,
+  Body,
+  LeftArm,
+  RightArm,
+  LeftLeg,
+  RightLeg,
+} from "../components/StickSvg/StickSvg.jsx";
 
 let index = 0;
 const Game = () => {
   const [disabledKeys, setDisabledKeys] = useState([]);
-  const [incorrectGuesses, setIncorrectGuesses] = useState(5);
+  const [incorrectGuesses, setIncorrectGuesses] = useState(6);
   const [currentWord, setCurrentWord] = useState("");
   const [guessedLetters, setGuessedLetters] = useState([]);
   const [gameOver, setGameOver] = useState(false);
   const [gameWon, setGameWon] = useState(false);
   const [time, setTime] = useState(45);
-  const [currentImage, setCurrentImage] = useState(images[index]);
+  // const [currentImage, setCurrentImage] = useState(images[index]);
   const params = useParams();
   const category = params.category;
 
@@ -53,9 +54,8 @@ const Game = () => {
 
   const handleKeyClick = (key) => {
     if (!currentWord.includes(key)) {
-      setIncorrectGuesses(incorrectGuesses - 1);
+      setIncorrectGuesses((prev) => prev - 1);
       index++;
-      setCurrentImage(images[index]);
     }
 
     // Update the state to include the clicked key
@@ -106,10 +106,8 @@ const Game = () => {
           <h2>You Won!</h2>
           <Confetti numberOfPieces={200} />
         </>
-      ) : gameOver ? (
-        <h2>You Lost!</h2>
       ) : (
-        <Stickman currentImage={currentImage} />
+        <h2>You Lost!</h2>
       )}
       {checkGameEnd() ? (
         <>
@@ -118,6 +116,16 @@ const Game = () => {
         </>
       ) : (
         <>
+          <svg height="500" width="500" id="stick">
+            <Gallow>
+              {incorrectGuesses < 6 && <Head />}
+              {incorrectGuesses < 5 && <Body />}
+              {incorrectGuesses < 4 && <LeftArm />}
+              {incorrectGuesses < 3 && <RightArm />}
+              {incorrectGuesses < 2 && <LeftLeg />}
+              {incorrectGuesses < 1 && <RightLeg />}
+            </Gallow>
+          </svg>
           <Word guessed={guessedLetters} word={currentWord} />
           <Keyboard disabledKeys={disabledKeys} onKeyClick={handleKeyClick} />
         </>
